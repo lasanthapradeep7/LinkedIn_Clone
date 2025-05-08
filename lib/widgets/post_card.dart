@@ -18,9 +18,12 @@ class PostCard extends StatelessWidget {
           children: [
             ListTile(
               contentPadding: EdgeInsets.zero,
-              leading: CircleAvatar(backgroundImage: AssetImage(post.profileUrl)),
+              leading: CircleAvatar(
+                radius: 30,
+                backgroundImage: AssetImage(post.profileUrl),
+              ),
               title: Text(post.username),
-              subtitle: Text('${post.role} · ${post.time}'),
+              subtitle: Text('${post.role}\n${post.time}'),
               trailing: Icon(Icons.more_vert),
             ),
             const SizedBox(height: 10),
@@ -33,13 +36,90 @@ class PostCard extends StatelessWidget {
             const SizedBox(height: 10),
             Row(
               children: [
-                CircleAvatar(radius: 10, backgroundImage: AssetImage("assets/images/user1.jpg")),
-                const SizedBox(width: 5),
-                Text("Liked by Budi and ${post.likes} others"),
+                Stack(
+                  children: [
+                    CircleAvatar(
+                      radius: 10,
+                      backgroundImage: AssetImage("assets/images/user1.jpg"),
+                    ),
+                    Positioned(
+                      left: 12,
+                      child: CircleAvatar(
+                        radius: 10,
+                        backgroundImage: AssetImage("assets/images/user2.jpg"),
+                      ),
+                    ),
+                    Positioned(
+                      left: 24,
+                      child: CircleAvatar(
+                        radius: 10,
+                        backgroundImage: AssetImage("assets/images/user3.jpg"),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(width: 10),
+                Text(
+                  "Liked by Budi and ${post.likes} others",
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                const Spacer(),
+                Text(
+                  "${post.comments} comments",
+                  style: TextStyle(color: Colors.grey[600]),
+                ),
               ],
             ),
-            const SizedBox(height: 5),
-            Text("${post.comments} comments", style: TextStyle(color: Colors.grey[600])),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    IconButton(
+                      icon: Image.asset(
+                        'assets/icons/like.png',
+                        width: 24,
+                        height: 24,
+                      ),
+                      onPressed: () {
+                        // Like action
+                      },
+                    ),
+                    IconButton(
+                      icon: Image.asset(
+                        'assets/icons/chat.png',
+                        width: 24,
+                        height: 24,
+                      ),
+                      onPressed: () {
+                        // Comment action
+                      },
+                    ),
+                    IconButton(
+                      icon: Image.asset(
+                        'assets/icons/share.png',
+                        width: 24,
+                        height: 24,
+                      ),
+                      onPressed: () {
+                        // Share action
+                      },
+                    ),
+                  ],
+                ),
+                IconButton(
+                  icon: Image.asset(
+                    'assets/icons/save.png',
+                    width: 24,
+                    height: 24,
+                  ),
+                  onPressed: () {
+                    // Save action
+                  },
+                ),
+              ],
+            ),
           ],
         ),
       ),

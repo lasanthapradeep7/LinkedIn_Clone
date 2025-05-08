@@ -76,7 +76,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       controller: _controller,
                       count: 3,
                       effect: const WormEffect(
-                        activeDotColor: Colors.blue,
+                        activeDotColor: Color(0xFF0077B5),
                         dotColor: Colors.grey,
                       ),
                     ),
@@ -102,7 +102,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       // );
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
+                      backgroundColor: Color(0xFF0077B5),
                       padding: const EdgeInsets.symmetric(
                         horizontal: 55,
                         vertical: 15,
@@ -138,7 +138,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w800,
-                        color: Colors.blue,
+                        color: Color(0xFF0077B5),
                       ),
                     ),
                   ),
