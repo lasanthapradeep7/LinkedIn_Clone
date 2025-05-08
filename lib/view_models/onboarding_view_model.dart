@@ -6,7 +6,7 @@ class OnboardingViewModel {
       imagePath: 'assets/images/onboarding_1.jpg',
       title: 'Land your Job',
       description:
-          'Connect, Apply and Get Hired with your favorite job around the world.',
+          'Connect, Apply and Get Hired with your\nfavorite job around the world.',
     ),
     OnboardingModel(
       imagePath: 'assets/images/onboarding_2.jpg',

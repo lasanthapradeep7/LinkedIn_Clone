@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:linkedin_clone/screens/onboarding_screen.dart';
+import 'package:linkedin_clone/screens/feed_screen.dart';
+
 
 
 void main() {
@@ -12,9 +13,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Onboarding',
-      home: const OnboardingScreen(),
+      title: 'Likedin Clone',
       debugShowCheckedModeBanner: false,
+      home: FeedScreen(),
     );
   }
 }

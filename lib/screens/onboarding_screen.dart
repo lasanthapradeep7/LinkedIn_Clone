@@ -29,8 +29,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               alignment: const Alignment(0, -0.5),
               child: Image.asset(
                 'assets/images/logo.png',
-                width: 100,
-                height: 100,
+                width: 120,
+                height: 120,
               ),
             ),
             Expanded(
@@ -71,7 +71,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   const SizedBox(height: 10),
                   //the page indicators
                   Container(
-                    alignment: const Alignment(0, 0.85),
+                    alignment: const Alignment(0, 1),
                     child: SmoothPageIndicator(
                       controller: _controller,
                       count: 3,
@@ -87,7 +87,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
             // Login and Sign-up buttons
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
