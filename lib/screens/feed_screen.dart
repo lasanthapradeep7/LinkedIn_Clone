@@ -12,7 +12,7 @@ class FeedScreen extends StatelessWidget {
     final posts = viewModel.getPosts();
 
     return Scaffold(
-      backgroundColor: Colors.grey[50],      
+      backgroundColor: Colors.grey[50],
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.grey[50],
@@ -23,7 +23,7 @@ class FeedScreen extends StatelessWidget {
               radius: 18,
               backgroundImage: AssetImage('assets/images/user_1.jpg'),
             ),
-            Image.asset('assets/images/logo.png', height: 70),
+            Image.asset('assets/images/logo.png', height: 80),
             Image.asset('assets/icons/notification.png', height: 30),
           ],
         ),
@@ -67,21 +67,67 @@ class FeedScreen extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: 8,
               itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 6),
-                  child: CircleAvatar(
-                    radius: 30,
-                    backgroundImage: AssetImage(
-                      "assets/images/user${(index % 6) + 1}.jpg",
+                if (index == 0) {
+                  // First item with + icon
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 6),
+                    child: Stack(
+                      alignment: Alignment.bottomRight,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(2), // Border width
+                          decoration: BoxDecoration(
+                            color: Color(0xFF0077B5),
+                            shape: BoxShape.circle,
+                          ),
+                          child: CircleAvatar(
+                            radius: 30,
+                            backgroundColor: Colors.white,
+                            child: CircleAvatar(
+                              radius: 28,
+                              backgroundImage: AssetImage(
+                                "assets/images/user_${(index % 6) + 1}.jpg",
+                              ),
+                            ),
+                          ),
+                        ),
+                        CircleAvatar(
+                          radius: 12,
+                          backgroundColor: Color(0xFF0077B5),
+                          child: Icon(Icons.add, size: 18, color: Colors.white),
+                        ),
+                      ],
                     ),
-                  ),
-                );
+                  );
+                } else {
+                  // Other items
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 6),
+                    child: Container(
+                      padding: const EdgeInsets.all(2), // Border width
+                      decoration: BoxDecoration(
+                        color: Color(0xFF0077B5),
+                        shape: BoxShape.circle,
+                      ),
+                      child: CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Colors.white,
+                        child: CircleAvatar(
+                          radius: 28,
+                          backgroundImage: AssetImage(
+                            "assets/images/user_${(index % 6) + 1}.jpg",
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                }
               },
             ),
           ),
           const SizedBox(height: 10),
           // Posts
-          ...posts.map((post) => PostCard(post: post)).toList(),
+          ...posts.map((post) => PostCard(post: post)),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

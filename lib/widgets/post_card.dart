@@ -40,20 +40,20 @@ class PostCard extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       radius: 10,
-                      backgroundImage: AssetImage("assets/images/user1.jpg"),
+                      backgroundImage: AssetImage("assets/images/user_1.jpg"),
                     ),
                     Positioned(
                       left: 12,
                       child: CircleAvatar(
                         radius: 10,
-                        backgroundImage: AssetImage("assets/images/user2.jpg"),
+                        backgroundImage: AssetImage("assets/images/user_2.jpg"),
                       ),
                     ),
                     Positioned(
                       left: 24,
                       child: CircleAvatar(
                         radius: 10,
-                        backgroundImage: AssetImage("assets/images/user3.jpg"),
+                        backgroundImage: AssetImage("assets/images/user_3.jpg"),
                       ),
                     ),
                   ],
