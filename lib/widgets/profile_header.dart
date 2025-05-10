@@ -83,13 +83,19 @@ class ProfileHeader extends StatelessWidget {
                   Icon(Icons.volume_up, color: Colors.black, size: 20),
                 ],
               ),
-              Text(profile.role, style: TextStyle(fontSize: 16)),
+              Text(
+                profile.role,
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
               Text(
                 profile.skills,
                 style: TextStyle(color: Colors.grey, fontSize: 12),
               ),
               const SizedBox(height: 10),
-              Text(profile.company, style: TextStyle(fontSize: 16)),
+              Text(
+                profile.company,
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
               Text(
                 profile.location,
                 style: TextStyle(color: Colors.grey, fontSize: 12),
@@ -119,7 +125,7 @@ class ProfileHeader extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,
-                        fontWeight: FontWeight.w400,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
@@ -141,7 +147,7 @@ class ProfileHeader extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.grey,
                         fontSize: 16,
-                        fontWeight: FontWeight.w400,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
@@ -161,12 +167,15 @@ class ProfileHeader extends StatelessWidget {
                 height: 100,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 5, // Number of cards
+                  itemCount: 3, // Number of cards
                   itemBuilder: (context, index) {
                     return Container(
                       width: 300,
                       margin: const EdgeInsets.only(right: 10),
-                      padding: const EdgeInsets.all(10),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 5,
+                        horizontal: 15,
+                      ),
                       decoration: BoxDecoration(
                         color: const Color(0xFFF5F5F5),
                         borderRadius: BorderRadius.circular(15),
@@ -181,7 +190,7 @@ class ProfileHeader extends StatelessWidget {
                                 "Open to work",
                                 style: TextStyle(
                                   fontSize: 16,
-                                  fontWeight: FontWeight.w400,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
                               IconButton(
