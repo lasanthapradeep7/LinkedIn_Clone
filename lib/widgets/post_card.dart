@@ -9,7 +9,8 @@ class PostCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 0,
+      elevation: 1,
+      color: Colors.white,
       margin: const EdgeInsets.symmetric(vertical: 8),
       child: Padding(
         padding: const EdgeInsets.all(12),
@@ -22,9 +23,17 @@ class PostCard extends StatelessWidget {
                 radius: 30,
                 backgroundImage: AssetImage(post.profileUrl),
               ),
-              title: Text(post.username),
+              title: Text(
+                post.username,
+                style: const TextStyle(fontWeight: FontWeight.w500),
+              ),
               subtitle: Text('${post.role}\n${post.time}'),
-              trailing: Icon(Icons.more_vert),
+              trailing: IconButton(
+                icon: const Icon(Icons.more_vert),
+                onPressed: () {
+                  // action
+                },
+              ),
             ),
             const SizedBox(height: 10),
             Text(post.description),
@@ -59,14 +68,26 @@ class PostCard extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(width: 10),
-                Text(
-                  "Liked by Budi and ${post.likes} others",
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                Text.rich(
+                  TextSpan(
+                    text: 'Liked by ',
+                    children: [
+                      TextSpan(
+                        text: 'Budi',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                      TextSpan(text: ' and '),
+                      TextSpan(
+                        text: '123 others',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  ),
                 ),
                 const Spacer(),
                 Text(
                   "${post.comments} comments",
-                  style: TextStyle(color: Colors.grey[600]),
+                  style: TextStyle(fontWeight: FontWeight.w600),
                 ),
               ],
             ),

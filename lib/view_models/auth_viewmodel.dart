@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
-import '../models/auth_model.dart';
+import 'package:linkedin_clone/models/auth_model.dart';
+
 
 class AuthViewModel extends ChangeNotifier {
   bool _isAuthenticated = false;
+  UserModel? _user;
 
   bool get isAuthenticated => _isAuthenticated;
+  UserModel? get user => _user;
 
   void login(String email, String password) {
     if (email == "test@example.com" && password == "password") {
       _isAuthenticated = true;
+      _user = UserModel(email: email, password: password);
     } else {
       _isAuthenticated = false;
     }
@@ -16,8 +20,8 @@ class AuthViewModel extends ChangeNotifier {
   }
 
   void signup(String email, String password) {
-    // Simulate signup logic
     _isAuthenticated = true;
+    _user = UserModel(email: email, password: password);
     notifyListeners();
   }
 }

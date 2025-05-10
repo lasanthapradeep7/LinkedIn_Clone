@@ -1,6 +1,6 @@
-class AuthModel {
+class UserModel {
   final String email;
   final String password;
 
-  AuthModel({required this.email, required this.password});
+  UserModel({required this.email, required this.password});
 }

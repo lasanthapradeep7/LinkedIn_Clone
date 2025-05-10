@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:linkedin_clone/view_models/feed_viewmodel.dart';
 import 'package:linkedin_clone/widgets/post_card.dart';
+import '../constants/colors.dart';
 
 class FeedScreen extends StatelessWidget {
   final FeedViewModel viewModel = FeedViewModel();
@@ -77,7 +78,7 @@ class FeedScreen extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.all(2), // Border width
                           decoration: BoxDecoration(
-                            color: Color(0xFF0077B5),
+                            color: primaryColor,
                             shape: BoxShape.circle,
                           ),
                           child: CircleAvatar(
@@ -93,7 +94,7 @@ class FeedScreen extends StatelessWidget {
                         ),
                         CircleAvatar(
                           radius: 12,
-                          backgroundColor: Color(0xFF0077B5),
+                          backgroundColor: primaryColor,
                           child: Icon(Icons.add, size: 18, color: Colors.white),
                         ),
                       ],
@@ -106,7 +107,7 @@ class FeedScreen extends StatelessWidget {
                     child: Container(
                       padding: const EdgeInsets.all(2), // Border width
                       decoration: BoxDecoration(
-                        color: Color(0xFF0077B5),
+                        color: primaryColor,
                         shape: BoxShape.circle,
                       ),
                       child: CircleAvatar(
@@ -135,13 +136,14 @@ class FeedScreen extends StatelessWidget {
         onPressed: () {
           // Action for the floating action button
         },
-        backgroundColor: const Color(0xFF0077B5),
+        backgroundColor: primaryColor,
         elevation: 4.0,
         child: const Icon(Icons.add, color: Colors.white),
       ),
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         notchMargin: 15.0,
+        color: Colors.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

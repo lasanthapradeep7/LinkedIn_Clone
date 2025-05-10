@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:linkedin_clone/models/user_profile_model.dart';
+import '../constants/colors.dart';
 
 class DashboardCard extends StatelessWidget {
   final UserProfile profile;
@@ -40,7 +41,7 @@ class DashboardCard extends StatelessWidget {
                       "Private to you",
                       style: TextStyle(
                         fontSize: 14,
-                        color: Colors.grey,
+                        color: secondaryColor,
                         fontStyle: FontStyle.italic,
                       ),
                     ),
@@ -52,7 +53,7 @@ class DashboardCard extends StatelessWidget {
                     SizedBox(width: 4),
                     Text(
                       "ALL-STAR",
-                      style: TextStyle(fontSize: 18, color: Colors.grey),
+                      style: TextStyle(fontSize: 18, color: secondaryColor),
                     ),
                   ],
                 ),
@@ -106,7 +107,7 @@ class DashboardCard extends StatelessWidget {
           ),
           // Creator mode card
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             child: Card(
               color: Colors.white,
               elevation: 2,
@@ -120,7 +121,11 @@ class DashboardCard extends StatelessWidget {
                   children: [
                     Row(
                       children: const [
-                        Icon(Icons.wifi, size: 24, color: Colors.black),
+                        Icon(
+                          Icons.wifi_tethering,
+                          size: 24,
+                          color: Colors.black,
+                        ),
                         SizedBox(width: 12),
                         Text(
                           "Creator mode: On",
@@ -134,9 +139,13 @@ class DashboardCard extends StatelessWidget {
                     const SizedBox(height: 8),
                     const Text(
                       "Get discovered, showcase content on your profile, and get access to creator tools",
-                      style: TextStyle(fontSize: 14, color: Colors.grey),
+                      style: TextStyle(fontSize: 13, color: secondaryColor),
                     ),
-                    const Divider(height: 24, thickness: 1, color: Colors.grey),
+                    const Divider(
+                      height: 24,
+                      thickness: 1,
+                      color: secondaryColor,
+                    ),
                     Row(
                       children: const [
                         Icon(Icons.people, size: 24, color: Colors.black),
@@ -153,7 +162,32 @@ class DashboardCard extends StatelessWidget {
                     const SizedBox(height: 8),
                     const Text(
                       "See and manage your connections and interests.",
-                      style: TextStyle(fontSize: 14, color: Colors.grey),
+                      style: TextStyle(fontSize: 13, color: secondaryColor),
+                    ),
+                    const Divider(
+                      height: 24,
+                      thickness: 1,
+                      color: secondaryColor,
+                    ),
+                    Center(
+                      child: TextButton.icon(
+                        onPressed: () {
+                          // Add your navigation or action logic here
+                        },
+                        icon: const Icon(
+                          Icons.arrow_forward,
+                          size: 16,
+                          color: primaryColor,
+                        ),
+                        label: const Text(
+                          "Show all resources",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: primaryColor,
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -179,13 +213,13 @@ class DashboardCard extends StatelessWidget {
           style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w500,
-            color: Colors.blue,
+            color: primaryColor,
           ),
         ),
         Text(
           label,
           textAlign: TextAlign.left,
-          style: const TextStyle(fontSize: 12, color: Colors.grey),
+          style: const TextStyle(fontSize: 13, color: secondaryColor),
         ),
       ],
     );
@@ -197,7 +231,7 @@ class DashboardCard extends StatelessWidget {
       width: 1,
       height: 70,
       margin: const EdgeInsets.symmetric(horizontal: 8),
-      color: Colors.grey[500],
+      color: secondaryColor,
     );
   }
 }

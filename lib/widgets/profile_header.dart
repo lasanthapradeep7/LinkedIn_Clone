@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:linkedin_clone/models/user_profile_model.dart';
+import '../constants/colors.dart';
 
 class ProfileHeader extends StatelessWidget {
   final UserProfile profile;
@@ -30,7 +31,7 @@ class ProfileHeader extends StatelessWidget {
                   onPressed: () {
                     // Action
                   },
-                  icon: Icon(Icons.edit, size: 18, color: Colors.blue),
+                  icon: Icon(Icons.edit, size: 18, color: primaryColor),
                 ),
               ),
             ),
@@ -45,7 +46,7 @@ class ProfileHeader extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 50,
-                backgroundImage: AssetImage('assets/images/user_4.jpg'),
+                backgroundImage: AssetImage('assets/images/user_1.jpg'),
               ),
               CircleAvatar(
                 radius: 15,
@@ -63,7 +64,7 @@ class ProfileHeader extends StatelessWidget {
             onPressed: () {
               // Action
             },
-            icon: Icon(Icons.edit, color: Colors.grey),
+            icon: Icon(Icons.edit, color: secondaryColor),
           ),
         ),
 
@@ -77,7 +78,7 @@ class ProfileHeader extends StatelessWidget {
                 children: [
                   Text(
                     profile.name,
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
                   ),
                   const SizedBox(width: 8),
                   Icon(Icons.volume_up, color: Colors.black, size: 20),
@@ -89,23 +90,23 @@ class ProfileHeader extends StatelessWidget {
               ),
               Text(
                 profile.skills,
-                style: TextStyle(color: Colors.grey, fontSize: 12),
+                style: TextStyle(color: secondaryColor, fontSize: 12),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 5),
               Text(
                 profile.company,
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
               ),
               Text(
                 profile.location,
-                style: TextStyle(color: Colors.grey, fontSize: 12),
+                style: TextStyle(color: secondaryColor, fontSize: 12),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 5),
               Text(
                 "${profile.followers} followers • ${profile.connections}+ connections",
-                style: TextStyle(color: Colors.blue, fontSize: 16),
+                style: TextStyle(color: primaryColor, fontSize: 16),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 5),
               Row(
                 children: [
                   // "Open to" button
@@ -114,7 +115,7 @@ class ProfileHeader extends StatelessWidget {
                       // Action for "Open to"
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
+                      backgroundColor: primaryColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -136,7 +137,7 @@ class ProfileHeader extends StatelessWidget {
                       // Action for "Add section"
                     },
                     style: OutlinedButton.styleFrom(
-                      side: BorderSide(color: Colors.grey),
+                      side: BorderSide(color: secondaryColor),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -145,7 +146,7 @@ class ProfileHeader extends StatelessWidget {
                     child: const Text(
                       "Add section",
                       style: TextStyle(
-                        color: Colors.grey,
+                        color: secondaryColor,
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                       ),
@@ -157,7 +158,7 @@ class ProfileHeader extends StatelessWidget {
                     onPressed: () {
                       // Action for three-dot menu
                     },
-                    icon: Icon(Icons.more_horiz, color: Colors.grey),
+                    icon: Icon(Icons.more_horiz, color: secondaryColor),
                   ),
                 ],
               ),
@@ -216,8 +217,8 @@ class ProfileHeader extends StatelessWidget {
                             child: const Text(
                               "See all details",
                               style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.blue,
+                                fontSize: 13,
+                                color: primaryColor,
                                 // decoration: TextDecoration.underline,
                               ),
                             ),

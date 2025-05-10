@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:linkedin_clone/screens/shared_onboarding_screen.dart';
+import 'package:linkedin_clone/screens/signup_screen.dart';
 import 'package:linkedin_clone/view_models/onboarding_view_model.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import '../constants/colors.dart';
+
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -76,7 +79,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       controller: _controller,
                       count: 3,
                       effect: const WormEffect(
-                        activeDotColor: Color(0xFF0077B5),
+                        activeDotColor: primaryColor,
                         dotColor: Colors.grey,
                       ),
                     ),
@@ -102,7 +105,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       // );
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF0077B5),
+                      backgroundColor: primaryColor,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 55,
                         vertical: 15,
@@ -119,13 +122,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                   OutlinedButton(
                     onPressed: () {
-                      // Navigate to sign-up screen
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => const SignUpScreen(), // Replace with your SignUpScreen widget
-                      //   ),
-                      // );
+                      ///Navigate to sign-up screen
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SignupScreen(),
+                        ),
+                      );
                     },
                     style: OutlinedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(
@@ -138,7 +141,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w800,
-                        color: Color(0xFF0077B5),
+                        color: primaryColor,
                       ),
                     ),
                   ),
