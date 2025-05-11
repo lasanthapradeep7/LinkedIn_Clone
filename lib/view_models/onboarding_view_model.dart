@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:linkedin_clone/models/onboarding_model.dart';
 
-class OnboardingViewModel {
-  static final List<OnboardingModel> onboardingList = [
+class OnboardingViewModel extends ChangeNotifier {
+  final List<OnboardingModel> _onboardingList = [
     OnboardingModel(
       imagePath: 'assets/images/onboarding_1.jpg',
       title: 'Land your Job',
@@ -19,4 +20,6 @@ class OnboardingViewModel {
       description: 'Discover job opportunities tailored to your skills.',
     ),
   ];
+
+  List<OnboardingModel> get onboardingList => _onboardingList;
 }

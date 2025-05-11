@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkedin_clone/constants/colors.dart';
 import '../../models/post_model.dart';
 
 class PostCard extends StatelessWidget {
@@ -9,7 +10,6 @@ class PostCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 1,
       color: Colors.white,
       margin: const EdgeInsets.symmetric(vertical: 8),
       child: Padding(
@@ -78,7 +78,7 @@ class PostCard extends StatelessWidget {
                       ),
                       TextSpan(text: ' and '),
                       TextSpan(
-                        text: '123 others',
+                        text: '${post.likes} others',
                         style: TextStyle(fontWeight: FontWeight.w600),
                       ),
                     ],
@@ -100,8 +100,9 @@ class PostCard extends StatelessWidget {
                     IconButton(
                       icon: Image.asset(
                         'assets/icons/like.png',
-                        width: 24,
-                        height: 24,
+                        width: 28,
+                        height: 28,
+                        color: iconColor,
                       ),
                       onPressed: () {
                         // Like action
@@ -112,6 +113,7 @@ class PostCard extends StatelessWidget {
                         'assets/icons/chat.png',
                         width: 24,
                         height: 24,
+                        color: iconColor,
                       ),
                       onPressed: () {
                         // Comment action
@@ -122,6 +124,7 @@ class PostCard extends StatelessWidget {
                         'assets/icons/share.png',
                         width: 24,
                         height: 24,
+                        color: iconColor,
                       ),
                       onPressed: () {
                         // Share action
@@ -134,6 +137,7 @@ class PostCard extends StatelessWidget {
                     'assets/icons/save.png',
                     width: 24,
                     height: 24,
+                    color: iconColor,
                   ),
                   onPressed: () {
                     // Save action

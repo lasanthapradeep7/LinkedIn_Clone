@@ -4,8 +4,8 @@ import 'package:linkedin_clone/view_models/user_profile_viewmodel.dart';
 import 'package:linkedin_clone/widgets/profile_header.dart';
 import 'package:linkedin_clone/widgets/dashboard_card.dart';
 
-class UserProfileScreen extends StatelessWidget {
-  const UserProfileScreen({super.key});
+class UserProfileView extends StatelessWidget {
+  const UserProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {

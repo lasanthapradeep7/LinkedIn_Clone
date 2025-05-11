@@ -50,7 +50,7 @@ class ProfileHeader extends StatelessWidget {
               ),
               CircleAvatar(
                 radius: 15,
-                backgroundColor: Colors.white,
+                backgroundColor: thirdColor,
                 child: Icon(Icons.add, size: 22, color: Colors.black),
               ),
             ],
@@ -178,7 +178,7 @@ class ProfileHeader extends StatelessWidget {
                         horizontal: 15,
                       ),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFF5F5F5),
+                        color: thirdColor,
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Column(

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class SharedOnboardingScreen extends StatelessWidget {
+class SharedOnboardingView extends StatelessWidget {
   final String imagePath;
   final String title;
   final String description;
 
-  const SharedOnboardingScreen({
+  const SharedOnboardingView({
     super.key,
     required this.imagePath,
     required this.title,

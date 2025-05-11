@@ -1,28 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:linkedin_clone/views/feed_view.dart';
 import 'package:provider/provider.dart';
-import 'package:linkedin_clone/screens/login_screen.dart';
-import 'package:linkedin_clone/screens/user_profile_screen.dart';
+import 'package:linkedin_clone/views/login_view.dart';
 import 'package:linkedin_clone/view_models/auth_viewmodel.dart';
 import '../constants/colors.dart';
 
-class SignupScreen extends StatelessWidget {
+class SignupView extends StatelessWidget {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  SignupScreen({super.key});
+  SignupView({super.key});
 
   @override
   Widget build(BuildContext context) {
     final vm = Provider.of<AuthViewModel>(context);
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 50),
+              const SizedBox(height: 24),
+              Container(
+                alignment: const Alignment(0, -0.5),
+                child: Image.asset(
+                  'assets/images/logo.png',
+                  width: 120,
+                  height: 120,
+                ),
+              ),
               const Text(
                 "Sign up",
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.w600),
@@ -60,7 +69,7 @@ class SignupScreen extends StatelessWidget {
                   vm.signup(emailController.text, passwordController.text);
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (_) => UserProfileScreen()),
+                    MaterialPageRoute(builder: (_) => FeedView()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -137,7 +146,7 @@ class SignupScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (_) => LoginScreen()),
+                      MaterialPageRoute(builder: (_) => LoginView()),
                     );
                   },
                   child: const Text(

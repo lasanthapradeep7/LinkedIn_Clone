@@ -1,33 +1,68 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:linkedin_clone/screens/shared_onboarding_screen.dart';
-import 'package:linkedin_clone/screens/signup_screen.dart';
-import 'package:linkedin_clone/view_models/onboarding_view_model.dart';
+import 'package:linkedin_clone/views/login_view.dart';
+import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:linkedin_clone/view_models/onboarding_view_model.dart';
+import 'package:linkedin_clone/views/shared_onboarding_view.dart';
+import 'package:linkedin_clone/views/signup_view.dart';
 import '../constants/colors.dart';
 
-
-class OnboardingScreen extends StatefulWidget {
-  const OnboardingScreen({super.key});
+class OnboardingView extends StatefulWidget {
+  const OnboardingView({super.key});
 
   @override
-  State<OnboardingScreen> createState() => _OnboardingScreenState();
+  State<OnboardingView> createState() => _OnboardingViewState();
 }
 
-class _OnboardingScreenState extends State<OnboardingScreen> {
+class _OnboardingViewState extends State<OnboardingView> {
   final PageController _controller = PageController();
-  bool showHomePage = false;
+  late Timer _timer;
 
-  // ...existing code...
+  @override
+  void initState() {
+    super.initState();
+    _startAutoSlide();
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _startAutoSlide() {
+    _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
+      if (_controller.page == 2) {
+        // If on last page, go back to first page
+        _controller.animateToPage(
+          0,
+          duration: const Duration(milliseconds: 700),
+          curve: Curves.easeInOut,
+        );
+      } else {
+        // Otherwise, move to the next page
+        _controller.nextPage(
+          duration: const Duration(milliseconds: 700),
+          curve: Curves.easeInOut,
+        );
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    final onboardingList =
+        Provider.of<OnboardingViewModel>(context).onboardingList;
+        
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween, // Adjust layout
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            //logo image
+            // Logo image
             Container(
               alignment: const Alignment(0, -0.5),
               child: Image.asset(
@@ -39,40 +74,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             Expanded(
               child: Stack(
                 children: [
-                  //Onboarding pages list is passed here
-                  PageView(
+                  // Onboarding pages list
+                  PageView.builder(
                     controller: _controller,
-                    onPageChanged: (index) {
-                      setState(() {
-                        showHomePage = index == 3;
-                      });
+                    itemCount: onboardingList.length,
+                    itemBuilder: (context, index) {
+                      final onboarding = onboardingList[index];
+                      return SharedOnboardingView(
+                        title: onboarding.title,
+                        imagePath: onboarding.imagePath,
+                        description: onboarding.description,
+                      );
                     },
-                    children: [
-                      SharedOnboardingScreen(
-                        title: OnboardingViewModel.onboardingList[0].title,
-                        imagePath:
-                            OnboardingViewModel.onboardingList[0].imagePath,
-                        description:
-                            OnboardingViewModel.onboardingList[0].description,
-                      ),
-                      SharedOnboardingScreen(
-                        title: OnboardingViewModel.onboardingList[1].title,
-                        imagePath:
-                            OnboardingViewModel.onboardingList[1].imagePath,
-                        description:
-                            OnboardingViewModel.onboardingList[1].description,
-                      ),
-                      SharedOnboardingScreen(
-                        title: OnboardingViewModel.onboardingList[2].title,
-                        imagePath:
-                            OnboardingViewModel.onboardingList[2].imagePath,
-                        description:
-                            OnboardingViewModel.onboardingList[2].description,
-                      ),
-                    ],
                   ),
                   const SizedBox(height: 10),
-                  //the page indicators
+                  // Page indicators
                   Container(
                     alignment: const Alignment(0, 1),
                     child: SmoothPageIndicator(
@@ -80,14 +96,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       count: 3,
                       effect: const WormEffect(
                         activeDotColor: primaryColor,
-                        dotColor: Colors.grey,
+                        dotColor: thirdColor,
+                        dotHeight: 4,
+                        dotWidth: 15,
                       ),
                     ),
                   ),
                 ],
               ),
             ),
-
             // Login and Sign-up buttons
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
@@ -97,12 +114,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ElevatedButton(
                     onPressed: () {
                       // Navigate to login screen
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => const LoginScreen(), // Replace with your LoginScreen widget
-                      //   ),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginView()),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: primaryColor,
@@ -122,12 +137,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                   OutlinedButton(
                     onPressed: () {
-                      ///Navigate to sign-up screen
+                      // Navigate to sign-up screen
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => SignupScreen(),
-                        ),
+                        MaterialPageRoute(builder: (context) => SignupView()),
                       );
                     },
                     style: OutlinedButton.styleFrom(
