@@ -52,14 +52,14 @@ class PostCard extends StatelessWidget {
                       backgroundImage: AssetImage("assets/images/user_1.jpg"),
                     ),
                     Positioned(
-                      left: 12,
+                      left: 8,
                       child: CircleAvatar(
                         radius: 10,
                         backgroundImage: AssetImage("assets/images/user_2.jpg"),
                       ),
                     ),
                     Positioned(
-                      left: 24,
+                      left: 10,
                       child: CircleAvatar(
                         radius: 10,
                         backgroundImage: AssetImage("assets/images/user_3.jpg"),
@@ -108,6 +108,7 @@ class PostCard extends StatelessWidget {
                         // Like action
                       },
                     ),
+                    const SizedBox(width: 8),
                     IconButton(
                       icon: Image.asset(
                         'assets/icons/chat.png',
@@ -119,6 +120,7 @@ class PostCard extends StatelessWidget {
                         // Comment action
                       },
                     ),
+                    const SizedBox(width: 8),
                     IconButton(
                       icon: Image.asset(
                         'assets/icons/share.png',

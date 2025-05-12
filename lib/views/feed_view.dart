@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:linkedin_clone/view_models/feed_viewmodel.dart';
-import 'package:linkedin_clone/views/user_profile_view.dart';
 import 'package:linkedin_clone/widgets/post_card.dart';
 import '../constants/colors.dart';
 
@@ -14,48 +13,21 @@ class FeedView extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        leading: null,
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => UserProfileView()),
-                );
-              },
-              child: CircleAvatar(
-                radius: 20,
-                backgroundImage: AssetImage('assets/images/user_1.jpg'),
-              ),
-            ),
-            Image.asset('assets/images/logo.png', height: 80),
-            IconButton(
-              icon: Image.asset('assets/icons/notification.png', height: 30),
-              onPressed: () {
-                // Action for notifications
-              },
-            ),
-          ],
-        ),
-      ),
       body: ListView(
         padding: const EdgeInsets.all(12),
         children: [
           // Search bar
           TextField(
             decoration: InputDecoration(
-              hintText: "Try 'Android Dev'",
+              hintText: 'Try "Android Dev"',
+              hintStyle: const TextStyle(color: secondaryColor),
               prefixIcon: Padding(
                 padding: const EdgeInsets.all(10),
                 child: Image.asset(
                   'assets/icons/search.png',
                   width: 20,
                   height: 20,
+                  color: secondaryColor,
                 ),
               ),
               suffixIcon: Padding(
@@ -64,6 +36,7 @@ class FeedView extends StatelessWidget {
                   'assets/icons/qr.png',
                   width: 20,
                   height: 20,
+                  color: secondaryColor,
                 ),
               ),
               filled: true,
@@ -144,70 +117,6 @@ class FeedView extends StatelessWidget {
           // Posts
           ...posts.map((post) => PostCard(post: post)),
         ],
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Action for the floating action button
-        },
-        backgroundColor: primaryColor,
-        elevation: 4.0,
-        child: const Icon(Icons.add, color: Colors.white),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        notchMargin: 15.0,
-        color: Colors.white,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-              icon: Image.asset(
-                'assets/icons/home.png',
-                width: 24,
-                height: 24,
-                color: primaryColor,
-              ),
-              onPressed: () {
-                // Action for home button
-              },
-            ),
-            IconButton(
-              icon: Image.asset(
-                'assets/icons/people.png',
-                width: 24,
-                height: 24,
-                color: iconColor,
-              ),
-              onPressed: () {
-                // Action for people button
-              },
-            ),
-            const SizedBox(width: 48), // Space for the FAB
-            IconButton(
-              icon: Image.asset(
-                'assets/icons/chat.png',
-                width: 24,
-                height: 24,
-                color: iconColor,
-              ),
-              onPressed: () {
-                // Action for chat button
-              },
-            ),
-            IconButton(
-              icon: Image.asset(
-                'assets/icons/jobs.png',
-                width: 24,
-                height: 24,
-                color: iconColor,
-              ),
-              onPressed: () {
-                // Action for jobs button
-              },
-            ),
-          ],
-        ),
       ),
     );
   }

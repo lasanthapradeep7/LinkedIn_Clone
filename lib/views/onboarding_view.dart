@@ -55,7 +55,7 @@ class _OnboardingViewState extends State<OnboardingView> {
   Widget build(BuildContext context) {
     final onboardingList =
         Provider.of<OnboardingViewModel>(context).onboardingList;
-        
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(

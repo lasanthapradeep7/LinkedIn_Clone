@@ -9,7 +9,7 @@ class AuthViewModel extends ChangeNotifier {
   UserModel? get user => _user;
 
   void login(String email, String password) {
-    if (email == "test@email.com" && password == "1234") {
+    if (email == "test@email.com" && password == "123456") {
       _isAuthenticated = true;
       _user = UserModel(email: email, password: password);
     } else {
