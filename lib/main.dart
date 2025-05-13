@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkedin_clone/views/login_view.dart';
 import 'package:linkedin_clone/views/main_view.dart';
 import 'package:provider/provider.dart';
 import 'package:linkedin_clone/view_models/onboarding_view_model.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
               : const OnboardingView();
         },
       ),
+      routes: {'/login': (context) => LoginView()},
     );
   }
 }

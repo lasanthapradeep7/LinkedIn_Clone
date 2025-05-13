@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:linkedin_clone/views/main_view.dart';
 import 'package:provider/provider.dart';
+import 'package:linkedin_clone/views/main_view.dart';
 import 'package:linkedin_clone/views/signup_view.dart';
 import 'package:linkedin_clone/view_models/auth_viewmodel.dart';
 import '../constants/colors.dart';
@@ -14,7 +14,7 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final vm = Provider.of<AuthViewModel>(context);
+    final vm = Provider.of<AuthViewModel>(context, listen: false);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -102,10 +102,16 @@ class LoginView extends StatelessWidget {
                 ),
                 const SizedBox(height: 24),
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      vm.login(emailController.text, passwordController.text);
-                      if (vm.isAuthenticated) {
+                      final isValid = await vm.login(
+                        emailController.text.trim(),
+                        passwordController.text.trim(),
+                      );
+                      if (isValid) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("Login successful!")),
+                        );
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (_) => MainView()),

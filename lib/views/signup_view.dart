@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:linkedin_clone/views/main_view.dart';
 import 'package:provider/provider.dart';
 import 'package:linkedin_clone/views/login_view.dart';
 import 'package:linkedin_clone/view_models/auth_viewmodel.dart';
@@ -14,7 +13,7 @@ class SignupView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final vm = Provider.of<AuthViewModel>(context);
+    final vm = Provider.of<AuthViewModel>(context, listen: false);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -70,9 +69,17 @@ class SignupView extends StatelessWidget {
                     labelText: "Password (6 characters minimum)",
                     labelStyle: TextStyle(color: secondaryColor),
                     border: OutlineInputBorder(),
+                    suffixText: "show",
+                    suffixStyle: TextStyle(
+                      color: primaryColor,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                   validator: (value) {
-                    if (value == null || value.length < 6) {
+                    if (value == null || value.isEmpty) {
+                      return "Please enter your password";
+                    }
+                    if (value.length < 6) {
                       return "Password must be at least 6 characters";
                     }
                     return null;
@@ -85,12 +92,18 @@ class SignupView extends StatelessWidget {
                 ),
                 const SizedBox(height: 24),
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      vm.signup(emailController.text, passwordController.text);
+                      await vm.signup(
+                        emailController.text.trim(),
+                        passwordController.text.trim(),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text("Signup successful!")),
+                      );
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (_) => MainView()),
+                        MaterialPageRoute(builder: (_) => LoginView()),
                       );
                     }
                   },

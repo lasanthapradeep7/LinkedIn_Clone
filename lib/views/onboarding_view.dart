@@ -38,13 +38,13 @@ class _OnboardingViewState extends State<OnboardingView> {
         // If on last page, go back to first page
         _controller.animateToPage(
           0,
-          duration: const Duration(milliseconds: 700),
+          duration: const Duration(milliseconds: 800),
           curve: Curves.easeInOut,
         );
       } else {
         // Otherwise, move to the next page
         _controller.nextPage(
-          duration: const Duration(milliseconds: 700),
+          duration: const Duration(milliseconds: 800),
           curve: Curves.easeInOut,
         );
       }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:linkedin_clone/view_models/auth_viewmodel.dart';
 import 'package:linkedin_clone/models/user_profile_model.dart';
 import '../constants/colors.dart';
 
@@ -9,6 +11,8 @@ class ProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authViewModel = Provider.of<AuthViewModel>(context, listen: false);
+
     return Stack(
       children: [
         // Cover photo
@@ -56,15 +60,46 @@ class ProfileHeader extends StatelessWidget {
             ],
           ),
         ),
-        // Edit icon for profile details
+        // Edit icon for profile details with popup menu
         Positioned(
           top: 170,
           right: 16,
-          child: IconButton(
-            onPressed: () {
-              // Action
+          child: PopupMenuButton<String>(
+            color: thirdColor,
+            onSelected: (value) async {
+              if (value == 'settings') {
+                // Navigate to settings page
+                Navigator.pushNamed(context, '/settings');
+              } else if (value == 'logout') {
+                // Perform logout
+                await authViewModel.logout();
+                Navigator.pushReplacementNamed(context, '/login');
+              }
             },
             icon: Icon(Icons.edit, color: secondaryColor),
+            itemBuilder:
+                (context) => [
+                  PopupMenuItem(
+                    value: 'settings',
+                    child: Row(
+                      children: const [
+                        Icon(Icons.settings, color: Colors.black),
+                        SizedBox(width: 8),
+                        Text('Settings'),
+                      ],
+                    ),
+                  ),
+                  PopupMenuItem(
+                    value: 'logout',
+                    child: Row(
+                      children: const [
+                        Icon(Icons.logout, color: Colors.black),
+                        SizedBox(width: 8),
+                        Text('Logout'),
+                      ],
+                    ),
+                  ),
+                ],
           ),
         ),
 
